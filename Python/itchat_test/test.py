@@ -24,7 +24,7 @@ def text_reply(msg):
 def atta_reply(msg):
     return ({ 'Picture': u'图片', 'Recording': u'录音',
         'Attachment': u'附件', 'Video': u'视频', }.get(msg['Type']) +
-        u'已下载到本地') # download function is: msg['Text'](msg['FileName'])
+        u'已转发给王珂') # download function is: msg['Text'](msg['FileName'])
 
 @itchat.msg_register(['Map', 'Card', 'Note', 'Sharing'])
 def mm_reply(msg):
@@ -48,7 +48,7 @@ def add_friend(msg):
     itchat.add_friend(**msg['Text'])
     itchat.send_msg(u'项目主页：https://github.com/ChenBooming/python_pycharm/tree/master/Python/itchat_test\n'
         + u'同盟会入群  ：回复 同盟会群\n' + u'亲子活动：回复 亲子活动\n' + u'白领活动：回复 白领活动\n'
-        + u'有问题反馈： 回复 作者，发送到坐着邮箱即可', msg['RecommendInfo']['UserName'])
+        + u'有问题反馈： 回复 作者 然后发送到作者邮箱即可', msg['RecommendInfo']['UserName'])
 
 itchat.auto_login(True, enableCmdQR=False)
 itchat.run()
