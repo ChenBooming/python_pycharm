@@ -12,7 +12,7 @@ def text_reply(msg):
         itchat.send('@img@test_group.jpeg', msg['FromUserName'])
         return u'进群有问题请艾特我或者群主'
     elif u'亲子活动' in msg['Text']:
-        itchat.send('@img@funmili.bmp', msg['FromUserName']) # there should be a picture
+        itchat.send('@img@funmili.jpg', msg['FromUserName']) # there should be a picture
     elif u'白领活动' in msg['Text']:
         itchat.send('@img@funbailing.bmp', msg['FromUserName'])  # there should be a picture
     else:
