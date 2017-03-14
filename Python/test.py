@@ -2,7 +2,7 @@
 import itchat
 # tuling plugin can be get here:
 # https://github.com/littlecodersh/EasierLife/tree/master/Plugins/Tuling
-# from tuling import get_response
+from tuling import get_response
 
 @itchat.msg_register('Text')
 def text_reply(msg):
