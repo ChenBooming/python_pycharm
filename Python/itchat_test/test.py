@@ -7,12 +7,14 @@ from tuling import get_response
 @itchat.msg_register('Text')
 def text_reply(msg):
     if u'作者' in msg['Text'] or u'主人' in msg['Text']:
-        return u'你可以在这里了解他：https://github.com/littlecodersh'
-    elif u'源代码' in msg['Text'] or u'获取文件' in msg['Text']:
-        itchat.send('@fil@main.py', msg['FromUserName'])
-        return u'这就是现在机器人后台的代码，是不是很简单呢？'
-    elif u'获取图片' in msg['Text']:
-        itchat.send('@img@applaud.gif', msg['FromUserName']) # there should be a picture
+        return u'找陈蒙 421235586@qq.com'
+    elif u'同盟会群' in msg['Text'] or u'报名同盟会' in msg['Text']:
+        itchat.send('@img@test_group.jpeg', msg['FromUserName'])
+        return u'进群有问题请艾特我或者群主'
+    elif u'亲子活动' in msg['Text']:
+        itchat.send('@img@funmili.bmp', msg['FromUserName']) # there should be a picture
+    elif u'白领活动' in msg['Text']:
+        itchat.send('@img@funbailing.bmp', msg['FromUserName'])  # there should be a picture
     else:
         return get_response(msg['Text']) or u'收到：' + msg['Text']
 
@@ -42,9 +44,9 @@ def group_reply(msg):
 @itchat.msg_register('Friends')
 def add_friend(msg):
     itchat.add_friend(**msg['Text'])
-    itchat.send_msg(u'项目主页：github.com/littlecodersh/ItChat\n'
-        + u'源代码  ：回复源代码\n' + u'图片获取：回复获取图片\n'
-        + u'欢迎Star我的项目关注更新！', msg['RecommendInfo']['UserName'])
+    itchat.send_msg(u'项目主页：https://github.com/ChenBooming/python_pycharm/tree/master/Python/itchat_test\n'
+        + u'同盟会入群  ：回复 同盟会群\n' + u'亲子活动：回复 亲子活动\n' + u'白领活动：回复 白领活动\n'
+        + u'有问题反馈： 回复 作者', msg['RecommendInfo']['UserName'])
 
 itchat.auto_login(True, enableCmdQR=False)
 itchat.run()
