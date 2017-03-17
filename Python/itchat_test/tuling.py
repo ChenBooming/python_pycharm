@@ -3,7 +3,7 @@ import sys, os
 import requests, json
 
 try:
-    with open('tuling.json') as f: key = json.loads(f.read())['key']
+    with open('/Users/koudai232/PycharmProjects/python_pycharm/Python/itchat_test/tuling.json') as f: key = json.loads(f.read())['key']
 except:
     key = '' # if key is '', get_response will return None
     # raise Exception('There is something wrong with the format of you plugin/config/tuling.json')

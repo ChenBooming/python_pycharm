@@ -2,6 +2,7 @@
 import itchat
 # tuling plugin can be get here:
 # https://github.com/littlecodersh/EasierLife/tree/master/Plugins/Tuling
+
 from tuling import get_response
 
 @itchat.msg_register('Text')
@@ -11,18 +12,18 @@ def text_reply(msg):
     elif u'同盟会群' in msg['Text'] or u'同盟会' in msg['Text']:
         itchat.send('@img@/Users/koudai232/PycharmProjects/python_pycharm/Python/itchat_test/img/tongmenghui_group.png', msg['FromUserName'])
         return u'长按扫码进群，有问题请@陈蒙或者群主'
-    elif u'亲子活动' in msg['Text']:
+    elif u'白领活动' in msg['Text']:
         itchat.send('@img@/Users/koudai232/PycharmProjects/python_pycharm/Python/itchat_test/img/funbailing.jpg', msg['FromUserName']) # there should be a picture
         return u'长按扫码关注，有问题联系@陈蒙'
-    elif u'白领活动' in msg['Text']:
+    elif u'亲子活动' in msg['Text']:
         itchat.send('@img@/Users/koudai232/PycharmProjects/python_pycharm/Python/itchat_test/img/funmili.jpg', msg['FromUserName'])  # there should be a picture
         return u'长按扫码关注，有问题联系@陈蒙'
     else:
-        return get_response(msg['Text']) or u'收到：' + msg['Text']
+        return get_response(msg['Text'])
 
 @itchat.msg_register(['Picture', 'Recording', 'Attachment', 'Video'])
 def atta_reply(msg):
-    return ({ 'Picture': u'图片', 'Recording': u'录音',
+    return (u'很好，'+{ 'Picture': u'图片', 'Recording': u'录音',
         'Attachment': u'附件', 'Video': u'视频', }.get(msg['Type']) +
         u'已转发给王珂') # download function is: msg['Text'](msg['FileName'])
 
@@ -46,9 +47,9 @@ def group_reply(msg):
 @itchat.msg_register('Friends')
 def add_friend(msg):
     itchat.add_friend(**msg['Text'])
-    itchat.send_msg(u'项目主页：https://github.com/ChenBooming/python_pycharm/tree/master/Python/itchat_test\n'
-        + u'同盟会入群  ：回复 同盟会群\n' + u'亲子活动：回复 亲子活动\n' + u'白领活动：回复 白领活动\n'
-        + u'有问题反馈： 回复 作者 然后发送到作者邮箱即可', msg['RecommendInfo']['UserName'])
+    itchat.send_msg(u'可设置自定义回复消息、图片甚至文件，比如：\n'
+        + u'同盟会入群：回复 同盟会群\n' + u'亲子活动：回复 亲子活动\n' + u'白领活动：回复 白领活动\n'
+        + u'有问题反馈：回复 有问题 然后发送到邮箱即可', msg['RecommendInfo']['UserName'])
 
 itchat.auto_login(True, enableCmdQR=False)
 itchat.run()
